@@ -1,4 +1,4 @@
-package com.example.haren201930326.config;
+package com.example.shopingmall.config;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.context.annotation.Bean;

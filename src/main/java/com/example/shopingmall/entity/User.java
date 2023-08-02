@@ -1,24 +1,34 @@
-package com.example.shoppingmall.entity;
+package com.example.shopingmall.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -66,40 +76,39 @@ public class User implements UserDetails {
     return this.roles.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
   }
 
-  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+  @JsonProperty(access = Access.WRITE_ONLY)
   @Override
   public String getPassword() {
     return this.password;
   }
 
-  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+  @JsonProperty(access = Access.WRITE_ONLY)
   @Override
   public String getUsername() {
-    return this.userName;
+    return this.userId;
   }
 
-  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+  @JsonProperty(access = Access.WRITE_ONLY)
   @Override
   public boolean isAccountNonExpired() {
     return true;
   }
 
-  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+  @JsonProperty(access = Access.WRITE_ONLY)
   @Override
   public boolean isAccountNonLocked() {
     return true;
   }
 
-  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+  @JsonProperty(access = Access.WRITE_ONLY)
   @Override
   public boolean isCredentialsNonExpired() {
     return true;
   }
 
-  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+  @JsonProperty(access = Access.WRITE_ONLY)
   @Override
   public boolean isEnabled() {
     return true;
   }
-
 }

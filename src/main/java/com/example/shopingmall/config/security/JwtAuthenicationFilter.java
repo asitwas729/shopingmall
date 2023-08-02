@@ -1,4 +1,4 @@
-package com.example.shopingmall.security;
+package com.example.shopingmall.config.security;
 
 import java.io.IOException;
 import javax.servlet.FilterChain;
