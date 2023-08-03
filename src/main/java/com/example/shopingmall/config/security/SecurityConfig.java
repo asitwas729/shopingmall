@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     httpSecurity.httpBasic().disable().csrf().disable().sessionManagement()
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-        .authorizeRequests().antMatchers("/sign-api/sign-in", "/sign-api/sign-up", "/sign-api/exception").permitAll()
+        .authorizeRequests().antMatchers("/sign-api/user-sign-in", "/sign-api/user-sign-up", "/sign-api/exception").permitAll()
         .antMatchers(HttpMethod.GET, "/product/**").permitAll()
         .antMatchers("**exception**").permitAll()
         .anyRequest().hasAnyRole("ADMIN")

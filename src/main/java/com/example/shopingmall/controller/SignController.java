@@ -22,8 +22,7 @@ public class SignController {
     this.signService = signService;
   }
 
-  @PostMapping("/sign-in")
-  @PreAuthorize("hasAnyRole('ROLE_USER')")
+  @PostMapping("/user-sign-in")
   public SignInResultDto UserSignIn(@RequestParam String id, @RequestParam String password) throws RuntimeException {
     SignInResultDto signInResultDto = signService.signIn(id, password);
     if(signInResultDto.getCode() == 0) {
@@ -31,9 +30,9 @@ public class SignController {
     }
     return signInResultDto;
   }
-  @PostMapping("/sign-up")
-  public SignUpResultDto UserSignUp(@RequestParam String id,@RequestParam String phone, @RequestParam String password, @RequestParam String name, @RequestParam String email) throws RuntimeException {
-    SignUpResultDto signUpResultDto = signService.UserSignUp(id, password, name,phone,email);
+  @PostMapping("/user-sign-up")
+  public SignUpResultDto UserSignUp(@RequestParam String id, @RequestParam String password,@RequestParam String name,  @RequestParam String email,@RequestParam String phone) throws RuntimeException {
+    SignUpResultDto signUpResultDto = signService.UserSignUp(id, password, name,email,phone);
     return signUpResultDto;
   }
 
