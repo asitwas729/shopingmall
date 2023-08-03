@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity httpSecurity) throws Exception {
 
-    httpSecurity.httpBasic().disable().csrf().disable().sessionManagement()
+    httpSecurity.httpBasic().disable().csrf().disable().cors().disable().sessionManagement()
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
         .authorizeRequests().antMatchers("/sign-api/user-sign-in", "/sign-api/user-sign-up", "/sign-api/exception").permitAll()
         .antMatchers(HttpMethod.GET, "/product/**").permitAll()
